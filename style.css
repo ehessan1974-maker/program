@@ -1,0 +1,188 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  margin: 0;
+  padding: 10px;
+  background: #f0f0f0;
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* كل صف */
+.row {
+  display: grid;
+  gap: 8px;
+  min-height: 30px; /* الارتفاع الافتراضي */
+}
+
+/* مضاعفة ارتفاع الصف الأول */
+.first-row {
+  min-height: 100px; /* ضعف باقي الصفوف */
+}
+
+/* مضاعفة ارتفاع الصف الثالث */
+.third-row {
+  min-height: 100px; /* ضعف باقي الصفوف */
+}
+
+/* توزيع الأعمدة */
+.row-1 { grid-template-columns: 1fr; }
+.row-2 { grid-template-columns: 1fr 1fr; }
+.row-3 { grid-template-columns: 1fr 1fr 1fr; }
+
+/* الصف الأول: الوسط أكبر */
+.first-row {
+  grid-template-columns: 1fr 5fr 1fr; /* ضيقنا اليمنى واليسرى */
+}
+
+/* الخانات */
+.cell {
+  background: #ffffff;
+  color: #000000;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+/* الخانة الوسطى بالصف الأول */
+.first-row .cell:nth-child(2),
+.row:nth-of-type(2) .cell:nth-child(1),
+.row:nth-of-type(3) .cell:nth-child(1) {
+  background: repeating-linear-gradient(
+    to right,
+    #90ee90,
+    lightgreen 2px,
+    white 2px,
+    white 4px
+  );
+  color: green;
+}
+
+/* الخانة اليسرى واليمـنى بالصف الأول */
+.first-row .cell:first-child,
+.first-row .cell:last-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotate(90deg);
+  transform-origin: center;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+@font-face {
+  font-family: 'thuluth';
+  src: url('thuluth.ttf') format('truetype');
+}
+
+/* الخانة الوسطى بالصف الأول */
+.first-row .cell:nth-child(2) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'thuluth', sans-serif;
+  font-size: 75px;
+  font-weight: bold;
+  direction: rtl;
+  color: darkgreen;
+}
+
+/* الصف الثالث */
+.third-row .cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 80px;
+  direction: rtl;
+}
+
+/* الصفوف الخاصة بمواقيت الصلاة */
+.prayer-row {
+  grid-template-columns: 1fr 1fr 1fr; /* تأكيد أن كل صف فيه 3 خانات */
+}
+
+.prayer-row .cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  color: darkblue;
+  border: 1px solid #ccc;
+  padding: 10px;
+  background: #f9f9f9;
+}
+
+/* الصف الرابع (3 خانات متساوية) */
+.fourth-row .cell {
+  min-height: 50px;
+  line-height: 1.6;
+  font-size: 18px;
+  text-align: center;
+}
+
+#current-time {
+  font-size: 60px;
+  font-weight: bold;
+  color: red;
+}
+
+#next-prayer {
+  font-size: 32px;
+  font-weight: bold;
+  color: darkgreen;
+}
+
+#iqama-time {
+  font-size: 32px;
+  font-weight: bold;
+  color: silver;
+}
+
+
+
+/* تجاوب مع الشاشات الصغيرة */
+@media (max-width: 600px) {
+  body {
+    padding: 5px; /* تقليل الهوامش قليلاً */
+  }
+
+  .cell {
+    font-size: 14px; /* تصغير النص داخل الخانات */
+    padding: 6px;    /* تقليل الحشو */
+  }
+
+  /* الصف الأول الوسط */
+  .first-row .cell:nth-child(2) {
+    font-size: 40px; /* تصغير الخط الكبير */
+  }
+
+  /* الصف الثالث (الأرقام الكبيرة) */
+  .third-row .cell {
+    font-size: 40px;
+  }
+
+  /* الوقت الحالي */
+  #current-time {
+    font-size: 32px;
+  }
+
+  /* الصلاة القادمة والإقامة */
+  #next-prayer,
+  #iqama-time {
+    font-size: 20px;
+  }
+
+  /* مواقيت الصلاة */
+  .prayer-row .cell {
+    font-size: 16px;
+    padding: 6px;
+  }
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>الروزنامة اللولو حمودية</title>
+  <!-- وسم مهم لتناسب الصفحة مع الموبايل -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="grid">
+
+    <!-- صف 1 (3 خانات بارتفاع مضاعف) -->
+    <div class="row row-3 first-row">
+      <div class="cell" id="hijri-year"></div> <!-- السنة الهجرية -->      
+      <div class="cell" id="day-name"></div>
+      <div class="cell" id="gregorian-year"></div>
+    </div>
+
+    <!-- صف 2 (خانتين) -->
+    <div class="row row-2">
+      <div class="cell" id="hijri-month"></div>
+      <div class="cell" id="gregorian-month"></div>
+    </div>
+
+    <!-- صف 3 (خانتين بارتفاع مضاعف) -->
+    <div class="row row-2 third-row">
+      <div class="cell" id="arabic-day-number"></div>
+      <div class="cell" id="gregorian-day-number"></div>
+    </div>
+
+    <!-- صف 4 (3 خانات متساوية) -->
+    <div class="row row-3 fourth-row">
+      <div class="cell" id="current-time"></div> <!-- الوقت الحالي -->
+      <div class="cell" id="next-prayer"></div> <!-- الصلاة القادمة -->
+      <div class="cell" id="iqama-time"></div><!-- باقي لإقامة الصلاة -->     
+    </div>
+
+    <!-- صف 6 (الفجر/الشروق/الظهر) -->
+    <div class="row row-3 prayer-row">
+      <div class="cell" id="fajr-time"></div>
+      <div class="cell" id="sunrise-time"></div>
+      <div class="cell" id="dhuhr-time"></div>
+    </div>
+
+    <!-- صف 8 (العصر/المغرب/العشاء) -->
+    <div class="row row-3 prayer-row">
+      <div class="cell" id="asr-time"></div>
+      <div class="cell" id="maghrib-time"></div>
+      <div class="cell" id="isha-time"></div>
+    </div>
+
+
+<!-- نافذة منبثقة لتفعيل الصوت -->
+<div id="audio-modal" style="
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;">
+  <div style="
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    max-width: 300px;">
+    <p>🔊 يرجى تفعيل الصوت لمرة واحدة</p>
+    <button id="enable-audio">تفعيل الصوت</button>
+  </div>
+
+
+  </div>
+
+  <audio id="adhan-audio" src="adhan.mp3" preload="auto"></audio>
+  <audio id="iqama-audio" src="iqama.mp3" preload="auto"></audio>
+  <audio id="alert-15" src="baki-llsalat-15.mp3"></audio>
+  <audio id="alert-10" src="baki-llsalat-10.mp3"></audio>
+  <audio id="alert-5"  src="baki-llsalat-5.mp3"></audio>
+
+  <!-- ربط ملفات الجافاسكربت -->
+  <script src="sound-activate.js"></script>
+  <script src="prayer-times.js"></script>
+  <script src="date-table.js"></script>
+  <script src="prayer-timer.js"></script>
+  <script src="next-prayer.js"></script>
+  <script src="iqama-timer.js"></script>
+  <script src="colors.js"></script>
+  <script src="adhan.js"></script>
+  <script src="iqama-sound.js"></script>
+  <script src="tanbih_kabl_alsalat.js"></script>
+
+</body>
+</html>
